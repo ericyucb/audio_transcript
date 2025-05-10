@@ -10,16 +10,25 @@ import uuid
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
+
+# Get environment configuration
+API_KEY = os.getenv("ELEVENLABS_API_KEY")
+ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+
+# Initialize FastAPI app
 app = FastAPI()
 
+# Create directory for storing generated PDFs
 PDF_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pdfs")
 os.makedirs(PDF_DIR, exist_ok=True)
 
-# Add CORS middleware
+# Add CORS middleware with appropriate configuration based on environment
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for testing
+    allow_origins=[FRONTEND_URL] if ENVIRONMENT == "production" else ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -34,7 +43,7 @@ async def transcribe(file: UploadFile = File(...)):
 
     base_url = "https://api.elevenlabs.io/v1/speech-to-text"
     
-    api_key = os.getenv("ELVELLAB_API_KEY")  
+    api_key = API_KEY  
 
         
     print(f"API Key available: {bool(api_key)}")
