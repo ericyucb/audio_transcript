@@ -81,7 +81,7 @@ export default function Home() {
           <h1 className="text-xl font-semibold">Audscript</h1>
         </div>
         <a 
-          href="https://github.com" 
+          href="https://github.com/ericyucb/audio_transcript" 
           target="_blank" 
           rel="noopener noreferrer"
           className="text-sm text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors"
