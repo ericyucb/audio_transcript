@@ -21,9 +21,7 @@ FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 # Initialize FastAPI app
 app = FastAPI()
 
-# Create directory for storing generated PDFs
-PDF_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pdfs")
-os.makedirs(PDF_DIR, exist_ok=True)
+
 
 # Add CORS middleware with appropriate configuration based on environment
 app.add_middleware(
