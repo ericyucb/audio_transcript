@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Get environment configuration
-API_KEY = os.getenv("ELEVENLABS_API_KEY")
+API_KEY = os.getenv("ELVELLABS_API_KEY")
 ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 
